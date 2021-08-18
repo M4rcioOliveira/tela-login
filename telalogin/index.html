@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <div id="container">
+
+        <img src="iconlogin.png" id="iconLogin">
+
+        <form id="form">
+
+            <div id="divEmail">
+                <label for="exampleFormControlInput1" class="form-label">Email</label>
+                <input class="form-control" type="email" id="email" placeholder="example@email.com" aria-describedby="emailHelp">
+
+            </div>
+
+            <div id="divSenha">
+                <label for="exampleFormControlInput1" class="form-label">Password</label>
+                <input class="form-control" type="password" id="password" placeholder="Password">
+            </div>
+
+            <p>
+
+                <a href="url">Forgot password?</a>
+
+            </p>
+
+            <div id="divButton">
+
+                <button type="button" class="btn btn-info" id="acessar">Acessar</button>
+
+            </div>
+
+
+
+        </form>
+
+
+
+    </div>
+
+
+
+    <script>
+        $(document).ready(function() {
+
+            $("#acessar").click(function() {
+
+                var email = $("#email").val();
+                var password = $("#password").val();
+
+                var urlStr = "http://localhost:8070/acesso/" + email + "/" + password;
+
+
+                $.ajax({
+
+                    url: urlStr,
+                    type: "get",
+                    dataType: "json",
+                    success: function(data) {
+
+
+                        alert(data.situacao);
+
+
+                    },
+
+                    error: function(erro) {
+                        console.log(erro);
+                    }
+
+                });
+
+            });
+
+        });
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
